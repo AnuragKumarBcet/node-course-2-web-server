@@ -12,7 +12,11 @@ app.use((req, res, next) => {
   var log = `${now}: ${req.method} ${req.url}`;
 
   console.log(log);
-  fs.appendFile('server.log', log + '\n');
+  fs.appendFile('server.log', log + '\n',(err)=>{
+   
+   if(err)
+    console.log(err)
+  });
   next();
 });
 
@@ -49,6 +53,13 @@ app.get('/bad', (req, res) => {
     errorMessage: 'Unable to handle request'
   });
 });
+
+app.get('/profile', (req, res) => {
+  res.render('profile.hbs',{
+    message : 'This is profile page'
+  })
+});
+
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
