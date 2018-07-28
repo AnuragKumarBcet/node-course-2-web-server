@@ -56,7 +56,8 @@ app.get('/bad', (req, res) => {
 
 app.get('/profile', (req, res) => {
   res.render('profile.hbs',{
-    message : 'This is profile page'
+    message : 'This is profile page',
+    pageTitle: 'Profile Page'
   })
 });
 
